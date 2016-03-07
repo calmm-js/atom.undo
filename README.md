@@ -36,6 +36,29 @@ const undoable = Undo({value: initial, Atom})
 The return value is a lensed atom with additional properties for controlling
 history.
 
+### Undoable
+
+#### undoable.undo() and undoable.redo()
+
+Undoes or redoes a change (if any).
+
+#### undoable.undo.count and undoable.redo.count
+
+Observable property that gives the number of times undo or redo has an effect.
+
+#### undoable.undo.has and undoable.redo.has
+
+Observable property that gives a boolean on whether undo or redo has an effect.
+
+#### undoable.initial
+
+Observable property that gives the initial value of the undoable.
+
+#### undoable.reset(value)
+
+Resets the state of the undoable so that the given value becomes the new initial
+value and all histroy is dropped.
+
 ### Replace
 
 By default, every actual change (as determined by Ramda's
@@ -66,25 +89,3 @@ The default `never` policy is to never replace; changes always create history.
 
 The `youngerThan` policy is to replace if the previous entry is younger than the
 given period in milliseconds.
-
-### undoable.undo() and undoable.redo()
-
-Undoes or redoes a change (if any).
-
-### undoable.undo.count and undoable.redo.count
-
-Observable property that gives the number of times undo or redo has an effect.
-
-### undoable.undo.has and undoable.redo.has
-
-Observable property that gives a boolean on whether undo or redo has an effect.
-
-### undoable.initial
-
-Observable property that gives the initial value of the undoable.
-
-### undoable.reset(value)
-
-Resets the state of the undoable so that the given value becomes the new initial
-value and all histroy is dropped.
->>>>>>> Docs
