@@ -18,7 +18,8 @@ or
 import Atom from "kefir-atom"
 ```
 
-for example.
+for example.  See [Bacon.Atom](https://github.com/calmm-js/bacon.atom) and
+[Kefir.Atom](https://github.com/calmm-js/kefir.atom) for details.
 
 The default import
 
