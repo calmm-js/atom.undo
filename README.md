@@ -26,8 +26,12 @@ The default import
 import Undo from "atom.undo"
 ```
 
-is a function to create an undoable atom.  You must pass an initial value and
-the desired `Atom` constructor:
+is a function to create an undoable atom.
+
+### Undoable
+
+To create an undoable atom, you must pass an initial value and the desired
+`Atom` constructor:
 
 ```js
 const undoable = Undo({value: initial, Atom})
@@ -35,8 +39,6 @@ const undoable = Undo({value: initial, Atom})
 
 The return value is a lensed atom with additional properties for controlling
 history.
-
-### Undoable
 
 #### undoable.undo() and undoable.redo()
 
