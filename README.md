@@ -59,14 +59,14 @@ Observable property that gives the initial value of the undoable.
 #### undoable.reset(value)
 
 Resets the state of the undoable so that the given value becomes the new initial
-value and all histroy is dropped.
+value and all history is dropped.
 
 ### Replace
 
 By default, every actual change (as determined by Ramda's
 [equals](http://ramdajs.com/0.19.0/docs/#equals) function) of the value of an
 undoable atom creates a new history entry.  In many cases you don't want to
-generate history from every change.  The `Undo` constructor takes an optional
+generate history for every change.  The `Undo` constructor takes an optional
 `replace` predicate as a parameter, which let's you control when the value is
 just replaced without creating history.
 
@@ -85,9 +85,9 @@ provides ready made replacement policies for undo.
 
 #### Replace.never
 
-The default `never` policy is to never replace; changes always create history.
+The default `never` policy is to never replace and always generate history.
 
 #### Replace.youngerThan(periodInMilliseconds)
 
-The `youngerThan` policy is to replace if the previous entry is younger than the
-given period in milliseconds.
+The `youngerThan` policy is to replace, without generating history, when the
+previous entry is younger than the given period in milliseconds.
