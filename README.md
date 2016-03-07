@@ -83,6 +83,15 @@ import {Replace} from "atom.undo"
 
 provides ready made replacement policies for undo.
 
+For example, to create an undoable atom with a 2.5 second history "debounce"
+period, one could write:
+
+```js
+const undoable = Undo({replace: Replace.youngerThan(2500),
+                       value: initial,
+                       Atom})
+```
+
 #### Replace.never
 
 The default `never` policy is to never replace and always generate history.
