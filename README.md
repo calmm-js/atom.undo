@@ -38,11 +38,12 @@ history.
 
 ### Replace
 
-By default, every actual change (as determined by Ramda's equals function) of
-the value of an undoable atom creates a new history entry.  In many cases you
-don't want to generate history from every change.  The `Undo` constructor takes
-an optional `replace` predicate as a parameter, which let's you control when the
-value is just replaced without creating history.
+By default, every actual change (as determined by Ramda's
+[equals](http://ramdajs.com/0.19.0/docs/#equals) function) of the value of an
+undoable atom creates a new history entry.  In many cases you don't want to
+generate history from every change.  The `Undo` constructor takes an optional
+`replace` predicate as a parameter, which let's you control when the value is
+just replaced without creating history.
 
 The `replace` function is given as a parameter an object of the form `{date,
 value, old: {date}}`, where dates have been obtained by `Date.now()`.  If
