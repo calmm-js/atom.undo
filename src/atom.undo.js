@@ -12,7 +12,7 @@ export const Replace = {
   youngerThan: ms => ({time, old}) => time - old.time < ms
 }
 
-export default ({shouldReplace = Replace.never, value, Atom}) => {
+export default ({replace = Replace.never, value, Atom}) => {
   const revs = Atom(init(value))
 
   const current = revs.lens(R.lens(old => old.values[old.index], (value, old) => {
@@ -21,7 +21,7 @@ export default ({shouldReplace = Replace.never, value, Atom}) => {
     const time = Date.now()
     return mk(time,
               [value].concat(old.values.slice(undoCount(old) &&
-                                              shouldReplace({time, value, old})
+                                              replace({time, value, old})
                                               ? old.index + 1
                                               : old.index)))
   }))
