@@ -15,7 +15,7 @@ import Atom from "bacon.atom"
 or
 
 ```js
-import Atom from "kefir-atom"
+import Atom from "kefir.atom"
 ```
 
 for example.  See [Bacon.Atom](https://github.com/calmm-js/bacon.atom) and
