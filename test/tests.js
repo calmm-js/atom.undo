@@ -1,4 +1,4 @@
-import Atom from "kefir-atom"
+import Atom from "kefir.atom"
 import {Observable, combine} from "kefir"
 import R from "ramda"
 
