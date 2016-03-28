@@ -41,28 +41,28 @@ const undoable = Undo({value: initial, Atom})
 The return value is a lensed atom with additional properties for controlling
 history.
 
-#### undoable.undo() and undoable.redo()
+#### `undoable.undo()` and `undoable.redo()`
 
 Undoes or redoes a change (if any).
 
-#### undoable.undo.count and undoable.redo.count
+#### `undoable.undo.count` and `undoable.redo.count`
 
 Observable property that gives the number of times undo or redo has an effect.
 
-#### undoable.undo.has and undoable.redo.has
+#### `undoable.undo.has` and `undoable.redo.has`
 
 Observable property that gives a boolean on whether undo or redo has an effect.
 
-#### undoable.initial
+#### `undoable.initial`
 
 Observable property that gives the initial value of the undoable.
 
-#### undoable.reset(value)
+#### `undoable.reset(value)`
 
 Resets the state of the undoable so that the given value becomes the new initial
 value and all history is dropped.
 
-### Replace
+### `Replace`
 
 By default, every actual change (as determined by Ramda's
 [equals](http://ramdajs.com/0.19.0/docs/#equals) function) of the value of an
@@ -93,11 +93,11 @@ const undoable = Undo({replace: Replace.youngerThan(2500),
                        Atom})
 ```
 
-#### Replace.never
+#### `Replace.never`
 
 The default `never` policy is to never replace and always generate history.
 
-#### Replace.youngerThan(periodInMilliseconds)
+#### `Replace.youngerThan(periodInMilliseconds)`
 
 The `youngerThan` policy is to replace, without generating history, when the
 previous entry is younger than the given period in milliseconds.
