@@ -20,10 +20,10 @@ export default ({replace = Replace.never, value, Atom}) => {
       return old
     const time = Date.now()
     return mk(time,
-              [value].concat(old.values.slice(undoCount(old) &&
-                                              replace({time, value, old})
-                                              ? old.index + 1
-                                              : old.index)))
+              R.prepend(value, old.values.slice(undoCount(old) &&
+                                                replace({time, value, old})
+                                                ? old.index + 1
+                                                : old.index)))
   }))
 
   const op = (delta, count) => {
