@@ -1,6 +1,6 @@
 {
   "name": "atom.undo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Minimalistic Undo-Redo implementation for Atoms",
   "main": "lib/atom.undo.js",
   "scripts": {
