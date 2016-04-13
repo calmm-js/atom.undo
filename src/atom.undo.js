@@ -1,4 +1,5 @@
-import R from "ramda"
+import * as L from "partial.lenses"
+import * as R from "ramda"
 
 const mapNoDups = (x2y, xs) => xs.map(x2y).skipDuplicates(R.equals)
 
@@ -15,7 +16,7 @@ export const Replace = {
 export default ({replace = Replace.never, value, Atom}) => {
   const revs = Atom(init(value))
 
-  const current = revs.lens(R.lens(old => old.values[old.index], (value, old) => {
+  const current = revs.lens(L.lens(old => old.values[old.index], (value, old) => {
     if (R.equals(value, old.values[old.index]))
       return old
     const time = Date.now()

@@ -1,5 +1,5 @@
+import * as R                from "ramda"
 import Atom                  from "kefir.atom"
-import R                     from "ramda"
 import {Observable, combine} from "kefir"
 
 import makeUndo from "../src/atom.undo"
