@@ -18,11 +18,11 @@ or
 import Atom from "kefir.atom"
 ```
 
-for example.  See [Bacon.Atom](https://github.com/calmm-js/bacon.atom) and
-[Kefir.Atom](https://github.com/calmm-js/kefir.atom) for details.
+for example.  See [`bacon.atom`](https://github.com/calmm-js/bacon.atom) and
+[`kefir.atom`](https://github.com/calmm-js/kefir.atom) for details.
 
 It is also possible to create atoms in other ways, such as with storage, see
-[Atom.Storage](https://github.com/calmm-js/atom.storage).
+[`atom.storage`](https://github.com/calmm-js/atom.storage).
 
 The default import
 
@@ -44,23 +44,23 @@ const undoable = Undo({value: initial, Atom})
 The return value is a lensed atom with additional properties for controlling
 history.
 
-#### `undoable.undo()` and `undoable.redo()`
+#### <a name="undo"></a><a name="redo"></a>[`undoable.undo()`](#undo "Undo a :: () -> ()") and [`undoable.redo()`](#redo "Undo a :: () -> ()")
 
 Undoes or redoes a change (if any).
 
-#### `undoable.undo.count` and `undoable.redo.count`
+#### <a name="count"></a>[`undoable.undo.count`](#count "Undo a :: Property Integer") and [`undoable.redo.count`](#count "Undo a :: Property Integer")
 
 Observable property that gives the number of times undo or redo has an effect.
 
-#### `undoable.undo.has` and `undoable.redo.has`
+#### <a name="has"></a>[`undoable.undo.has`](#has "Undo a :: Property Boolean") and [`undoable.redo.has`](#has "Undo a :: Property Boolean")
 
 Observable property that gives a boolean on whether undo or redo has an effect.
 
-#### `undoable.initial`
+#### <a name="initial"></a>[`undoable.initial`](#initial "Undo a :: Property a")
 
 Observable property that gives the initial value of the undoable.
 
-#### `undoable.reset(value)`
+#### <a name="reset"></a>[`undoable.reset(value)`](#reset "Undo a :: a -> ()")
 
 Resets the state of the undoable so that the given value becomes the new initial
 value and all history is dropped.
@@ -75,9 +75,10 @@ generate history for every change.  The `Undo` constructor takes an optional
 just replaced without creating history.
 
 The `replace` function is given as a parameter an object of the form `{date,
-value, old: {date}}`, where dates have been obtained by `Date.now()`.  If
-`replace` returns a truthy value, the latest value is replaced without creating
-history.
+value, old: {date}}`, where dates have been obtained by
+[`Date.now()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now).
+If `replace` returns a truthy value, the latest value is replaced without
+creating history.
 
 The named import `Replace`
 
