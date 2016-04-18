@@ -97,11 +97,11 @@ const undoable = Undo({replace: Replace.youngerThan(2500),
                        Atom})
 ```
 
-#### `Replace.never`
+#### <a name="never"></a>[`Replace.never`](#never)
 
 The default `never` policy is to never replace and always generate history.
 
-#### `Replace.youngerThan(periodInMilliseconds)`
+#### <a name="youngerThan"></a>[`Replace.youngerThan(periodInMilliseconds)`](#youngerThan)
 
 The `youngerThan` policy is to replace, without generating history, when the
 previous entry is younger than the given period in milliseconds.
