@@ -68,7 +68,7 @@ value and all history is dropped.
 ### `Replace`
 
 By default, every actual change (as determined by Ramda's
-[equals](http://ramdajs.com/0.19.0/docs/#equals) function) of the value of an
+[equals](http://ramdajs.com/0.21.0/docs/#equals) function) of the value of an
 undoable atom creates a new history entry.  In many cases you don't want to
 generate history for every change.  The `Undo` constructor takes an optional
 `replace` predicate as a parameter, which let's you control when the value is
