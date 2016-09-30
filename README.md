@@ -1,6 +1,6 @@
 Minimalistic Undo-Redo implementation for Atoms.
 
-[![npm version](https://badge.fury.io/js/atom.undo.svg)](http://badge.fury.io/js/atom.undo) [![Build Status](https://travis-ci.org/calmm-js/atom.undo.svg?branch=master)](https://travis-ci.org/calmm-js/atom.undo) [![](https://david-dm.org/calmm-js/atom.undo.svg)](https://david-dm.org/calmm-js/atom.undo) [![](https://david-dm.org/calmm-js/atom.undo/dev-status.svg)](https://david-dm.org/calmm-js/atom.undo#info=devDependencies)
+[![npm version](https://badge.fury.io/js/atom.undo.svg)](http://badge.fury.io/js/atom.undo) [![Build Status](https://travis-ci.org/calmm-js/atom.undo.svg?branch=master)](https://travis-ci.org/calmm-js/atom.undo) [![](https://david-dm.org/calmm-js/atom.undo.svg)](https://david-dm.org/calmm-js/atom.undo) [![](https://david-dm.org/calmm-js/atom.undo/dev-status.svg)](https://david-dm.org/calmm-js/atom.undo?type=dev)
 
 ## Reference
 
