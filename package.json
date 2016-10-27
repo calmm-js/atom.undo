@@ -1,6 +1,6 @@
 {
   "name": "atom.undo",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Reactive variables with Undo-Redo",
   "main": "lib/atom.undo.js",
   "scripts": {
