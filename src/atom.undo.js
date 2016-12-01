@@ -1,7 +1,7 @@
+import * as I from "infestines"
 import * as L from "partial.lenses"
-import * as R from "ramda"
 
-const mapNoDups = (x2y, xs) => xs.map(x2y).skipDuplicates(R.equals)
+const mapNoDups = (x2y, xs) => xs.map(x2y).skipDuplicates(I.acyclicEqualsU)
 
 const mk = (time, values) => ({time, index: 0, values})
 const init = value => mk(Date.now(), [value])
@@ -17,14 +17,14 @@ export default ({replace = Replace.never, value, Atom}) => {
   const revs = Atom(init(value))
 
   const current = revs.view(L.lens(old => old.values[old.index], (value, old) => {
-    if (R.equals(value, old.values[old.index]))
+    if (I.acyclicEqualsU(value, old.values[old.index]))
       return old
     const time = Date.now()
     return mk(time,
-              R.prepend(value, old.values.slice(undoCount(old) &&
-                                                replace({time, value, old})
-                                                ? old.index + 1
-                                                : old.index)))
+              [value].concat(old.values.slice(undoCount(old) &&
+                                              replace({time, value, old})
+                                              ? old.index + 1
+                                              : old.index)))
   }))
 
   const op = (delta, count) => {
