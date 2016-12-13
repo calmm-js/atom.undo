@@ -27,7 +27,7 @@ export default ({replace = Replace.never, value, Atom}) => {
                                               : old.index)))
   }))
 
-  const op = (delta, count) => {
+  function op(delta, count) {
     const fn = () => revs.modify(
       revs => count(revs) ? {...revs, index: revs.index + delta} : revs)
     fn.count = mapNoDups(count, revs)
