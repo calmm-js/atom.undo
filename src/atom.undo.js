@@ -1,7 +1,7 @@
-import * as I from "infestines"
-import * as L from "partial.lenses"
+import {acyclicEqualsU} from "infestines"
+import {lens} from "partial.lenses"
 
-const mapNoDups = (x2y, xs) => xs.map(x2y).skipDuplicates(I.acyclicEqualsU)
+const mapNoDups = (x2y, xs) => xs.map(x2y).skipDuplicates(acyclicEqualsU)
 
 const mk = (time, values) => ({time, index: 0, values})
 const init = value => mk(Date.now(), [value])
@@ -16,8 +16,8 @@ export const Replace = {
 export default ({replace = Replace.never, value, Atom}) => {
   const revs = Atom(init(value))
 
-  const current = revs.view(L.lens(old => old.values[old.index], (value, old) => {
-    if (I.acyclicEqualsU(value, old.values[old.index]))
+  const current = revs.view(lens(old => old.values[old.index], (value, old) => {
+    if (acyclicEqualsU(value, old.values[old.index]))
       return old
     const time = Date.now()
     return mk(time,
