@@ -1,6 +1,6 @@
 {
   "name": "atom.undo",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Reactive variables with Undo-Redo",
   "main": "lib/atom.undo.js",
   "scripts": {
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/calmm-js/atom.undo#readme",
   "dependencies": {
-    "infestines": "^0.2.0",
+    "infestines": ">=0.2.0 <0.4.0",
     "partial.lenses": ">=3.1.0 <8.0.0"
   },
   "devDependencies": {
@@ -39,6 +39,6 @@
     "kefir.atom": "^4.0.1",
     "mocha": "^3.2.0",
     "nyc": "^10.0.0",
-    "ramda": "^0.22.1"
+    "ramda": "^0.23.0"
   }
 }
