@@ -1,4 +1,4 @@
-import {acyclicEqualsU} from "infestines"
+import {acyclicEqualsU, assocPartialU} from "infestines"
 import {lens} from "partial.lenses"
 
 const mapNoDups = (x2y, xs) => xs.map(x2y).skipDuplicates(acyclicEqualsU)
@@ -29,7 +29,9 @@ export default ({replace = Replace.never, value, Atom}) => {
 
   function op(delta, count) {
     const fn = () => revs.modify(
-      revs => count(revs) ? {...revs, index: revs.index + delta} : revs)
+      revs => count(revs)
+        ? assocPartialU("index", revs.index + delta, revs)
+        : revs)
     fn.count = mapNoDups(count, revs)
     fn.has = mapNoDups(n => !!n, fn.count)
     return fn
