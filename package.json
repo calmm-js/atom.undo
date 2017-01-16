@@ -36,7 +36,7 @@
     "babel-register": "^6.18.0",
     "eslint": "^3.13.1",
     "kefir": "^3.7.0",
-    "kefir.atom": "^4.1.0",
+    "kefir.atom": "^5.0.1",
     "mocha": "^3.2.0",
     "nyc": "^10.0.0",
     "ramda": "^0.23.0"
