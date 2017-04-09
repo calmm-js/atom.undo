@@ -2,7 +2,7 @@ import * as R                from "ramda"
 import Atom                  from "kefir.atom"
 import {Observable, combine} from "kefir"
 
-import makeUndo from "../src/atom.undo"
+import makeUndo from "../dist/atom.undo.cjs"
 
 const Undo = value => makeUndo({value, Atom})
 

@@ -1,12 +1,15 @@
 {
   "name": "atom.undo",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Reactive variables with Undo-Redo",
-  "main": "lib/atom.undo.js",
+  "main": "dist/atom.undo.cjs.js",
+  "module": "dist/atom.undo.es.js",
   "scripts": {
-    "dist": "babel src --source-maps inline --out-dir lib",
+    "dist": "npm run dist:es & npm run dist:cjs & wait",
+    "dist:cjs": "    NODE_ENV=           rollup -c -n atom.undo -i src/atom.undo.js -f cjs -o dist/atom.undo.cjs.js",
+    "dist:es": "     NODE_ENV=           rollup -c -n atom.undo -i src/atom.undo.js -f es  -o dist/atom.undo.es.js",
     "lint": "eslint src test",
-    "prepublish": "npm run lint && npm run test && npm run dist",
+    "prepublish": "npm run lint && npm run dist && npm run test",
     "test": "nyc mocha"
   },
   "repository": {
@@ -28,17 +31,23 @@
     "partial.lenses": ">=2.2.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.0",
+    "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
-    "babel-preset-es2015": "^6.24.0",
-    "babel-preset-stage-2": "^6.22.0",
-    "babel-register": "^6.24.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-register": "^6.24.1",
     "eslint": "^3.19.0",
     "kefir": "^3.7.1",
-    "kefir.atom": "^5.2.2",
+    "kefir.atom": "^5.2.4",
     "mocha": "^3.2.0",
     "nyc": "^10.2.0",
-    "ramda": "^0.23.0"
+    "ramda": "^0.23.0",
+    "rollup": "^0.41.6",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-uglify": "^1.0.1"
   }
 }
