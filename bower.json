@@ -1,0 +1,17 @@
+{
+  "name": "atom.undo",
+  "description": "Reactive variables with Undo-Redo",
+  "main": "dist/atom.undo.js",
+  "license": "MIT",
+  "keywords": [
+    "atom",
+    "undo",
+    "lens"
+  ],
+  "homepage": "https://github.com/calmm-js/atom.undo",
+  "dependencies": {
+    "infestines": "^0.4.0",
+    "partial.lenses": ">=2.2.0"
+  },
+  "ignore": ["*", "!*.md", "!dist/*"]
+}
