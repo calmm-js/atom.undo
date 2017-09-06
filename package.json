@@ -5,11 +5,13 @@
   "main": "dist/atom.undo.cjs.js",
   "module": "dist/atom.undo.es.js",
   "scripts": {
-    "dist": "npm run dist:es & npm run dist:cjs & wait",
+    "dist": "npm run dist:umd & npm run dist:umd.min & npm run dist:es & npm run dist:cjs & wait",
     "dist:cjs": "    NODE_ENV=           rollup -c -n atom.undo -i src/atom.undo.js -f cjs -o dist/atom.undo.cjs.js",
     "dist:es": "     NODE_ENV=           rollup -c -n atom.undo -i src/atom.undo.js -f es  -o dist/atom.undo.es.js",
+    "dist:umd": "    NODE_ENV=dev        rollup -c -n atom.undo -i src/atom.undo.js -f umd -o dist/atom.undo.js",
+    "dist:umd.min": "NODE_ENV=production rollup -c -n atom.undo -i src/atom.undo.js -f umd -o dist/atom.undo.min.js",
     "lint": "eslint src test",
-    "prepublish": "npm run lint && npm run dist && npm run test",
+    "prepare": "npm run lint && npm run dist && npm run test",
     "test": "nyc mocha"
   },
   "repository": {

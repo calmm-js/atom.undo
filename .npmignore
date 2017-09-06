@@ -2,6 +2,7 @@
 .babelrc
 .eslintrc
 .travis.yml
+.nyc_output
 bench
 bower.json
 docs
