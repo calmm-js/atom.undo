@@ -1,8 +1,11 @@
-import { acyclicEqualsU, assocPartialU } from 'infestines';
-import { lens } from 'partial.lenses';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('infestines'), require('partial.lenses')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'infestines', 'partial.lenses'], factory) :
+	(factory((global.atom = global.atom || {}, global.atom.undo = {}),global.I,global.L));
+}(this, (function (exports,infestines,partial_lenses) { 'use strict';
 
 var mapNoDups = function mapNoDups(x2y, xs) {
-  return xs.map(x2y).skipDuplicates(acyclicEqualsU);
+  return xs.map(x2y).skipDuplicates(infestines.acyclicEqualsU);
 };
 
 var mk = function mk(time, values) {
@@ -39,10 +42,10 @@ var atom_undo = (function (_ref2) {
 
   var revs = Atom(init(value));
 
-  var current = revs.view(lens(function (old) {
+  var current = revs.view(partial_lenses.lens(function (old) {
     return old.values[old.index];
   }, function (value, old) {
-    if (acyclicEqualsU(value, old.values[old.index])) return old;
+    if (infestines.acyclicEqualsU(value, old.values[old.index])) return old;
     var time = Date.now();
     return mk(time, [value].concat(old.values.slice(undoCount(old) && replace({ time: time, value: value, old: old }) ? old.index + 1 : old.index)));
   }));
@@ -50,7 +53,7 @@ var atom_undo = (function (_ref2) {
   function op(delta, count) {
     var fn = function fn() {
       return revs.modify(function (revs) {
-        return count(revs) ? assocPartialU("index", revs.index + delta, revs) : revs;
+        return count(revs) ? infestines.assocPartialU("index", revs.index + delta, revs) : revs;
       });
     };
     fn.count = mapNoDups(count, revs);
@@ -73,5 +76,9 @@ var atom_undo = (function (_ref2) {
   return current;
 });
 
-export { Replace };
-export default atom_undo;
+exports.Replace = Replace;
+exports['default'] = atom_undo;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
