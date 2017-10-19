@@ -65,9 +65,10 @@ Observable property that gives the initial value of the undoable.
 Resets the state of the undoable so that the given value becomes the new initial
 value and all history is dropped.
 
-#### <a name="revert"></a>[`undoable.revert()`](#revert "Undo a :: a -> ()")
+#### <a name="revert"></a>[`undoable.revert()`](#revert "Undo a :: () -> ()")
 
-Resets the state of the undoable to the value of `undoable.initial` and drops all history.
+Resets the state of the undoable to the value of `undoable.initial` and drops
+all history.
 
 ### `Replace`
 
