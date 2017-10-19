@@ -39,4 +39,8 @@ describe("undo-redo", () => {
   testEq('{var x = Undo("a"); x.set("b"); x.undo(); x.redo(); return stateOf(x)}', ["b", true, false, "a"])
   testEq('{var x = Undo("a"); x.set("b"); x.undo(); x.set("c"); return stateOf(x)}', ["c", true, false, "a"])
   testEq('{var x = Undo("a"); x.undo(); return stateOf(x)}', ["a", false, false, "a"])
+  testEq('{var x = Undo("a"); x.revert(); return stateOf(x)}', ["a", false, false, "a"])
+  testEq('{var x = Undo("a"); x.set("b"); x.revert(); return stateOf(x)}', ["a", false, false, "a"])
+  testEq('{var x = Undo("a"); x.set("b"); x.set("c"); x.revert(); return stateOf(x)}', ["a", false, false, "a"])
+  testEq('{var x = Undo("a"); x.set("b"); x.revert(); x.set("b"); return stateOf(x)}', ["b", true, false, "a"])
 })
