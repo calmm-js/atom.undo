@@ -8,6 +8,8 @@ const init = value => mk(Date.now(), [value])
 const undoCount = revs => revs.values.length - revs.index - 1
 const redoCount = revs => revs.index
 
+const last = ({values}) => values[values.length-1]
+
 export const Replace = {
   never: () => false,
   youngerThan: ms => ({time, old}) => time - old.time < ms
@@ -39,8 +41,9 @@ export default ({replace = Replace.never, value, Atom}) => {
 
   current.undo = op(+1, undoCount)
   current.redo = op(-1, redoCount)
-  current.initial = mapNoDups(({values}) => values[values.length-1], revs)
+  current.initial = mapNoDups(last, revs)
   current.reset = value => revs.set(init(value))
+  current.revert = () => current.reset(last(revs.get()))
 
   return current
 }
