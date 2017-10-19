@@ -18,24 +18,29 @@ var redoCount = function redoCount(revs) {
   return revs.index;
 };
 
+var last = function last(_ref) {
+  var values = _ref.values;
+  return values[values.length - 1];
+};
+
 var Replace = {
   never: function never() {
     return false;
   },
   youngerThan: function youngerThan(ms) {
-    return function (_ref) {
-      var time = _ref.time,
-          old = _ref.old;
+    return function (_ref2) {
+      var time = _ref2.time,
+          old = _ref2.old;
       return time - old.time < ms;
     };
   }
 };
 
-var atom_undo = (function (_ref2) {
-  var _ref2$replace = _ref2.replace,
-      replace = _ref2$replace === undefined ? Replace.never : _ref2$replace,
-      value = _ref2.value,
-      Atom = _ref2.Atom;
+var atom_undo = (function (_ref3) {
+  var _ref3$replace = _ref3.replace,
+      replace = _ref3$replace === undefined ? Replace.never : _ref3$replace,
+      value = _ref3.value,
+      Atom = _ref3.Atom;
 
   var revs = Atom(init(value));
 
@@ -62,12 +67,12 @@ var atom_undo = (function (_ref2) {
 
   current.undo = op(+1, undoCount);
   current.redo = op(-1, redoCount);
-  current.initial = mapNoDups(function (_ref3) {
-    var values = _ref3.values;
-    return values[values.length - 1];
-  }, revs);
+  current.initial = mapNoDups(last, revs);
   current.reset = function (value) {
     return revs.set(init(value));
+  };
+  current.revert = function () {
+    return current.reset(last(revs.get()));
   };
 
   return current;
